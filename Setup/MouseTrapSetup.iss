@@ -1,5 +1,5 @@
 #define AppName "MouseTrap"
-#define AppVersion GetEnv("BUILD_VERSION")
+#define AppVersion GetEnv("GitVersion_LegacySemVer")
 #define AppPublisher "Mark van Renswoude"
 #define AppURL "https://github.com/MvRens/MouseTrap"
 #define AppExeName "MouseTrap.exe"
