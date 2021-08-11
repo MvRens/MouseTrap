@@ -1,5 +1,5 @@
 image: Visual Studio 2019
-
+skip_tags: true
 
 install:
   - choco install gitversion.portable -pre -y
@@ -26,10 +26,9 @@ artifacts:
 deploy:
   provider: GitHub
   auth_token:
-    secure: fPvma5Dn9PV65Juan1Lx9AcxoGwLSRIxSjYZGZ46EvI8QoXEUGH0T0fnJDYF5vbM
+    secure: wcCLjXIsoiaVetYk+2q3suieP6B0oou+0TSC6cSEyVIUbsVxsvpUPwQpPHEE1h18
   artifact: Release\\MouseTrap-.*\.exe/
   draft: false
   prerelease: false
   on:
     branch: master
-    APPVEYOR_REPO_TAG: true
