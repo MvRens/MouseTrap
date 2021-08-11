@@ -71,8 +71,11 @@ namespace MouseTrap.Model
             {
                 if (value == enabled)
                     return;
-                
-                // TODO remove the hook entirely when disabled
+
+                if (value)
+                    InstallMouseHook();
+                else
+                    UninstallMouseHook();
 
                 enabled = value;
                 OnEnabledChanged?.Invoke(this, new EnabledChangedEventArgs(value));
@@ -96,8 +99,10 @@ namespace MouseTrap.Model
         public void Dispose()
         {
             UninstallMouseHook();
-            UninstallWindowMonitor();
-            
+
+            windowMonitorTimer?.Dispose();
+            windowMonitorTimer = null;
+
             GC.SuppressFinalize(this);
         }
         
@@ -107,23 +112,6 @@ namespace MouseTrap.Model
             if (started)
                 return;
 
-            try
-            {
-                InstallMouseHook();
-                InstallWindowMonitor();
-                started = true;
-            }
-            catch
-            {
-                UninstallMouseHook();
-                UninstallWindowMonitor();
-                throw;
-            }
-        }
-
-        
-        private void InstallWindowMonitor()
-        {
             // It would be nice to be able to use a CBT windows hook to monitor the active window.
             // Unfortunately that would require a native DLL as it needs to be injected into every process.
             // Doable but more effort and riskier, I'll live with a simple timer for now as it does not need to be instant.
@@ -131,15 +119,11 @@ namespace MouseTrap.Model
             {
                 PollActiveWindow();
             }, null, WindowMonitorPollingInterval, WindowMonitorPollingInterval);
-        }
-        
 
-        private void UninstallWindowMonitor()
-        {
-            windowMonitorTimer?.Dispose();
-            windowMonitorTimer = null;
+            started = true;
         }
-        
+
+
 
         private void InstallMouseHook()
         {
@@ -178,8 +162,6 @@ namespace MouseTrap.Model
 
             area = newArea;
             OnCursorRestrictionChanged?.Invoke(this, new CursorRestrictionChangedEventArgs(newArea));
-            
-            // TODO immediately move cursor?
         }
 
 
