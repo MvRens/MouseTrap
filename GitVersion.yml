@@ -1,0 +1,12 @@
+mode: ContinuousDeployment
+branches:
+  master:
+    mode: ContinuousDelivery
+  develop:
+    tag: develop
+  release:
+    tag: release
+  hotfix:
+    tag: hotfix
+ignore:
+  sha: [] 
