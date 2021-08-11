@@ -12,7 +12,7 @@ build:
   project: MouseTrap.sln
 
 platform:
-  - Any CPU
+  - x64
 
 configuration:
   - Release
