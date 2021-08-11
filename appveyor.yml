@@ -27,7 +27,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: wcCLjXIsoiaVetYk+2q3suieP6B0oou+0TSC6cSEyVIUbsVxsvpUPwQpPHEE1h18
-  artifact: Release\\MouseTrap-.*\.exe/
+  artifact: /Release\\MouseTrap-.*\.exe/
   draft: false
   prerelease: false
   on:
