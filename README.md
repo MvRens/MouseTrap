@@ -6,8 +6,18 @@ MouseTrap does one thing; it keeps the cursor within the bounds of the monitor w
 
 ![Screenshot](Screenshot.png)
 
+## Download
+The latest installer is available on the [releases](https://github.com/MvRens/MouseTrap/releases) page.
+.NET Framework 4.8 is required, the installer will check if it is installed and guide you to the download page otherwise.
+
+Currently only a 64-bits version is included. If you need a 32-bits version, either build it yourself or ask nicely!
+
+
+## Developing
+MouseTrap is written in C# using Visual Studio 2019.
+
 ## Builds
-Builds are automatically run using AppVeyor. Builds for the master branch are available as [Github releases](https://github.com/MvRens/MouseTrap/releases).
+Builds are automatically run using AppVeyor.
 
 Master build
 [![Build status](https://ci.appveyor.com/api/projects/status/fpcmve1686qb04li/branch/master?svg=true)](https://ci.appveyor.com/project/MvRens/mousetrap/branch/master)
